@@ -11,4 +11,8 @@ class Bibliotheque
         }
         $this->livres[$l->getIsbn()] = $l;
     }
+    public function compter(): int
+    {
+        return count($this->livres);
+    }
 }

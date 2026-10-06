@@ -39,4 +39,12 @@ class Livre
     {
         return $this->disponible;
     }
+        public function emprunter(): void
+    {
+        if (!$this->disponible) {
+            throw new Exception('Ce livre est déjà emprunté.');
+        }
+
+        $this->disponible = false;
+    }
 }

@@ -24,4 +24,24 @@ foreach (['123', '123456789A', '12345678901234'] as $isbnInvalide) {
     }
 
     verifier($exceptionLevee, "ISBN invalide refusé : $isbnInvalide");
+    $livreEmprunt = new Livre('1234567891', 'Livre emprunt', 'Auteur');
+$livreEmprunt->emprunter();
+
+verifier(
+    !$livreEmprunt->estDisponible(),
+    'Un livre emprunté est indisponible'
+);
+
+$exceptionLevee = false;
+
+try {
+    $livreEmprunt->emprunter();
+} catch (Exception $e) {
+    $exceptionLevee = true;
+}
+
+verifier(
+    $exceptionLevee,
+    'Un deuxième emprunt est refusé'
+);
 }

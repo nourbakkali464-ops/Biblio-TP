@@ -24,7 +24,7 @@ class Bibliotheque
     {
         return array_values($this->livres);
     }
-     public function rechercher(string $mot): array
+    public function rechercher(string $mot): array
     {
         $k = mb_strtolower($mot);
         return array_values(array_filter($this->livres, fn(Livre $l) =>
